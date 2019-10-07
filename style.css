@@ -1,0 +1,11 @@
+body {
+    background-color: white;
+}
+
+input {
+    height: 40px;
+    width: 300px;
+    font-size: 28px;
+    font-family: monospace;
+    letter-spacing: 0.5em;
+}
