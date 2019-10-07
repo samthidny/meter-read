@@ -6,12 +6,12 @@ function select(input) {
 
 
 document.getElementById('meter-input').addEventListener('click', e => {
-    console.log('click ' + e.target.selectionStart);
+    log('click ' + e.target.selectionStart);
     var cursor = e.target.selectionStart;
-    
+
     // Attempting to fix being able to select next char with mouse
     //e.target.setSelectionRange(-1, -1);
-    e.target.setSelectionRange(cursor, cursor+1);
+    e.target.setSelectionRange(cursor, cursor + 1);
     //e.preventDefault();
 });
 
@@ -23,41 +23,41 @@ document.getElementById('meter-input').addEventListener('focus', e => {
 
 document.getElementById('meter-input').addEventListener('keydown', e => {
 
-    
+
     var length = e.target.maxLength;
     var cursor = e.target.selectionStart;
     e.preventDefault();
-    
+
     // Right arrow select next character
-    if (e.code === 'ArrowRight') { 
+    if (e.code === 'ArrowRight') {
         cursor++;
         cursor = Math.min(length - 1, cursor);
         e.target.setSelectionRange(cursor, cursor + 1);
     }
 
     // Left arrow select previous character
-    if (e.code === 'ArrowLeft') { 
+    if (e.code === 'ArrowLeft') {
         cursor--;
         cursor = Math.max(0, cursor);
         e.target.setSelectionRange(cursor, cursor + 1);
     }
 
-    console.log('Keydown cursor ' + cursor);
+    log('Keydown cursor ' + cursor);
 
     // Backspace
-    if(e.code === 'Backspace') {
-        console.log('You just deleted char ' + e.target.selectionStart);
+    if (e.code === 'Backspace') {
+        log('You just deleted char ' + e.target.selectionStart);
         var cursor = e.target.selectionStart
         var arr = e.target.value.split('');
         arr.splice(e.target.selectionStart, 1, '-');
         start = Math.max(e.target.selectionStart - 1, 0);
         end = start + 1;
-    
+
         e.target.value = arr.join('');
         e.target.setSelectionRange(start, end);
 
     }
-        
+
 
     // Only handle numbers - cant use type = number as setSelectionRange won't work
     if (e.keyCode < 48 || e.keyCode > 57) {
@@ -69,15 +69,19 @@ document.getElementById('meter-input').addEventListener('keydown', e => {
     e.target.value = arr.join('');
     e.target.setSelectionRange(cursor + 1, cursor + 2);
 
-            
+
     // Don't allow anymore characters than max
     if (cursor === length - 1) {
-        console.log('Too long!!!');
+        log('Too long!!!');
         e.target.setSelectionRange(length - 1, length);
     }
 
-    
+
 });
+
+function log(msg) {
+    document.getElementById('logger').value += msg + '\n';
+}
 
 // document.getElementById('meter-input').addEventListener('keyup', e => { 
 //     // If entering the last character, then highlight last char instead of default
@@ -90,7 +94,7 @@ document.getElementById('meter-input').addEventListener('keydown', e => {
 //     }
 //     e.preventDefault();
 //     console.log('Keyup cursor ' + cursor);
-    
+
 // });
 
 
@@ -98,14 +102,14 @@ document.getElementById('meter-input').addEventListener('keydown', e => {
 
 //     return;
 //     console.log('Key up: ', e.target.selectionStart);
-    
+
 //     var start = 0;
 //     var end = 1;
 //     var length = e.target.maxLength;
 
 //     start = e.target.selectionStart;
 //     end = e.target.selectionStart + 1;
-    
+
 //     if(e.code === 'Backspace') {
 //         console.log('You just deleted char ' + e.target.selectionStart + 1);
 //         var cursor = e.target.selectionStart
@@ -113,7 +117,7 @@ document.getElementById('meter-input').addEventListener('keydown', e => {
 //         arr.splice(e.target.selectionStart, 0, '-');
 //         start = Math.max(e.target.selectionStart - 1, 0);
 //         end = start + 1;
-    
+
 //         e.target.value = arr.join('');
 //         e.target.setSelectionRange(start, end);
 
@@ -124,7 +128,7 @@ document.getElementById('meter-input').addEventListener('keydown', e => {
 //         end = length;
 //     }
 //     // if(e.code === 'ArrowRight') {
-        
+
 //     // } else 
 //     if(e.code === 'ArrowLeft') {
 //         if(e.target.selectionStart === 0) {

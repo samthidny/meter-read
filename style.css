@@ -9,3 +9,9 @@ input {
     font-family: monospace;
     letter-spacing: 0.5em;
 }
+
+
+textarea {
+    width: 800px;
+    height: 300px;
+}
