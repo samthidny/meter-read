@@ -1,11 +1,11 @@
 console.log('hello');
 
 var keyCodeSupported = true;
+var meterLength = 0;
 
 function select(input) {
     input.setSelectionRange(input.selectionStart, input.selectionStart + 1);
 }
-
 
 document.getElementById('meter-input').addEventListener('click', e => {
     log('click ' + e.target.selectionStart);
@@ -28,6 +28,7 @@ document.getElementById('meter-input').addEventListener('keydown', e => {
     var length = e.target.maxLength;
     var cursor = e.target.selectionStart;
 
+    
     // Android doesnt support keycodes so we just do defauly behaviour
     if(e.code) {
         log('e code ' + e.code);
@@ -37,22 +38,24 @@ document.getElementById('meter-input').addEventListener('keydown', e => {
         keyCodeSupported = false;
         return;
     }
-
+    
     // Right arrow select next character
     if (e.code === 'ArrowRight') {
         cursor++;
         cursor = Math.min(length - 1, cursor);
         e.target.setSelectionRange(cursor, cursor + 1);
     }
-
+    
     // Left arrow select previous character
     if (e.code === 'ArrowLeft') {
         cursor--;
         cursor = Math.max(0, cursor);
         e.target.setSelectionRange(cursor, cursor + 1);
     }
-
+    
     log('Keydown cursor ' + cursor + ' Key ' + e.code);
+    meterLength = e.target.value.length;
+    log('meter length keydown ' + meterLength);
 
     // Backspace
     if (e.code === 'Backspace') {
@@ -101,6 +104,10 @@ document.getElementById('meter-input').addEventListener('input', e => {
     if (keyCodeSupported) {
         return;
     }
+
+    meterLength = e.target.value.length;
+    log('meter length input ' + meterLength);
+
 
     var length = e.target.maxLength;
     var cursor = e.target.selectionStart;
