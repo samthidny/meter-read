@@ -1,0 +1,30 @@
+body {
+    background-color: lightblue;
+}
+
+input {
+    height: 40px;
+    width: 300px;
+    font-size: 28px;
+    font-family: monospace;
+    letter-spacing: 0.5em;
+}
+
+
+textarea {
+    width: 800px;
+    height: 300px;
+}
+
+#meter-input {
+    position: absolute;
+    background-color: rgba(0,0,0,0.1);
+    border: none;
+}
+
+#meter-input-back {
+    position: absolute;
+    top:0px;
+    color: gray;
+}
+
