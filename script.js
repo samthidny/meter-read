@@ -24,7 +24,7 @@ document.getElementById('meter-input').addEventListener('focus', e => {
     e.target.setSelectionRange(0, 1);
 });
 
-document.getElementById('meter-input').addEventListener('keydown', e => {
+document.getElementById('meter-input').addEventListener('input', e => {
     var length = e.target.maxLength;
     var cursor = e.target.selectionStart;
 
@@ -97,31 +97,29 @@ function log(msg) {
 }
 
 
+// document.getElementById('meter-input').addEventListener('input', e => { 
+//     // If entering the last character, then highlight last char instead of default
+//     if (keyCodeSupported) {
+//         return;
+//     }
+
+//     meterLength = e.target.value.length;
+//     log('meter length input ' + meterLength);
 
 
-document.getElementById('meter-input').addEventListener('input', e => { 
-    // If entering the last character, then highlight last char instead of default
-    if (keyCodeSupported) {
-        return;
-    }
+//     var length = e.target.maxLength;
+//     var cursor = e.target.selectionStart;
+//     if (cursor === length) {
+//         e.target.setSelectionRange(length - 1, length);
+//         log('Key up Too long!!!');
+//         return;
+//     } else {
+//         log('Key up - cursor:' + cursor + ' length ' + e.target.value + ' ' + e.target.value.length);
+//         e.target.setSelectionRange(cursor, cursor + 1);
+//     }
+//     e.preventDefault();
 
-    meterLength = e.target.value.length;
-    log('meter length input ' + meterLength);
-
-
-    var length = e.target.maxLength;
-    var cursor = e.target.selectionStart;
-    if (cursor === length) {
-        e.target.setSelectionRange(length - 1, length);
-        log('Key up Too long!!!');
-        return;
-    } else {
-        log('Key up - cursor:' + cursor + ' length ' + e.target.value + ' ' + e.target.value.length);
-        e.target.setSelectionRange(cursor, cursor + 1);
-    }
-    e.preventDefault();
-
-});
+// });
 
 // document.getElementById('meter-input').addEventListener('keyup', e => { 
 //     // If entering the last character, then highlight last char instead of default
