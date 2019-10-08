@@ -42,7 +42,7 @@ document.getElementById('meter-input').addEventListener('keydown', e => {
         e.target.setSelectionRange(cursor, cursor + 1);
     }
 
-    log('Keydown cursor ' + cursor);
+    log('Keydown cursor ' + cursor + ' Key ' + e.code);
 
     // Backspace
     if (e.code === 'Backspace') {
