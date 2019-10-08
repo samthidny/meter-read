@@ -106,13 +106,14 @@ document.getElementById('meter-input').addEventListener('keyup', e => {
     var cursor = e.target.selectionStart;
     if (cursor === length) {
         e.target.setSelectionRange(length - 1, length);
-        console.log('Key up Too long!!!');
+        log('Key up Too long!!!');
         return;
     } else {
+        log('Key up - cursor:' + cursor);
         e.target.setSelectionRange(cursor, cursor + 1);
     }
     e.preventDefault();
-    console.log('Keyup cursor ' + cursor);
+    log('Keyup cursor ' + cursor);
 
 });
 
