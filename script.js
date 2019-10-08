@@ -96,7 +96,7 @@ function log(msg) {
 
 
 
-document.getElementById('meter-input').addEventListener('keyup', e => { 
+document.getElementById('meter-input').addEventListener('input', e => { 
     // If entering the last character, then highlight last char instead of default
     if (keyCodeSupported) {
         return;
