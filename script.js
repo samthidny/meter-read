@@ -1,5 +1,7 @@
 console.log('hello');
 
+var keyCodeSupported = true;
+
 function select(input) {
     input.setSelectionRange(input.selectionStart, input.selectionStart + 1);
 }
@@ -23,7 +25,10 @@ document.getElementById('meter-input').addEventListener('focus', e => {
 });
 
 document.getElementById('meter-input').addEventListener('keydown', e => {
+    var length = e.target.maxLength;
+    var cursor = e.target.selectionStart;
 
+    // Android doesnt support keycodes so we just do defauly behaviour
     if(e.code) {
         log('e code ' + e.code);
         e.preventDefault();
@@ -31,10 +36,6 @@ document.getElementById('meter-input').addEventListener('keydown', e => {
         log('device doesnt support keycodes');
         return;
     }
-
-    var length = e.target.maxLength;
-    var cursor = e.target.selectionStart;
-    
 
     // Right arrow select next character
     if (e.code === 'ArrowRight') {
@@ -90,6 +91,29 @@ document.getElementById('meter-input').addEventListener('keydown', e => {
 function log(msg) {
     document.getElementById('logger').value += msg + '\n';
 }
+
+
+
+
+document.getElementById('meter-input').addEventListener('keyup', e => { 
+    // If entering the last character, then highlight last char instead of default
+    if (keyCodeSupported) {
+        return;
+    }
+
+    var length = e.target.maxLength;
+    var cursor = e.target.selectionStart;
+    if (cursor === length) {
+        e.target.setSelectionRange(length - 1, length);
+        console.log('Key up Too long!!!');
+        return;
+    } else {
+        e.target.setSelectionRange(cursor, cursor + 1);
+    }
+    e.preventDefault();
+    console.log('Keyup cursor ' + cursor);
+
+});
 
 // document.getElementById('meter-input').addEventListener('keyup', e => { 
 //     // If entering the last character, then highlight last char instead of default
