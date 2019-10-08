@@ -4,7 +4,7 @@ body {
 
 input {
     height: 40px;
-    width: 300px;
+    width: 400px;
     font-size: 28px;
     font-family: monospace;
     letter-spacing: 0.5em;
@@ -24,7 +24,7 @@ textarea {
 
 #meter-input-back {
     position: absolute;
-    top:0px;
+    top: 0px;
     color: gray;
 }
 
