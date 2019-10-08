@@ -17,6 +17,7 @@ document.getElementById('meter-input').addEventListener('click', e => {
 
 document.getElementById('meter-input').addEventListener('focus', e => {
     // On focus select character 1
+    log('focus')
     var cursor = e.target.selectionStart;
     e.target.setSelectionRange(0, 1);
 });
