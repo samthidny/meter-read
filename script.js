@@ -24,12 +24,12 @@ document.getElementById('meter-input').addEventListener('focus', e => {
 
 document.getElementById('meter-input').addEventListener('keydown', e => {
 
-    if(e.code) {
-        log('e code ' + e.code);
-    } else {
-        log('device doesnt support keycodes');
-        return;
-    }
+    // if(e.code) {
+    //     log('e code ' + e.code);
+    // } else {
+    //     log('device doesnt support keycodes');
+    //     return;
+    // }
 
     var length = e.target.maxLength;
     var cursor = e.target.selectionStart;
