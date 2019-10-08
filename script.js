@@ -34,6 +34,7 @@ document.getElementById('meter-input').addEventListener('keydown', e => {
         e.preventDefault();
     } else {
         log('device doesnt support keycodes');
+        keyCodeSupported = false;
         return;
     }
 
