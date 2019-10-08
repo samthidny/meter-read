@@ -24,11 +24,14 @@ document.getElementById('meter-input').addEventListener('focus', e => {
     e.target.setSelectionRange(0, 1);
 });
 
-document.getElementById('meter-input').addEventListener('input', e => {
+document.getElementById('meter-input').addEventListener('keydown', e => {
     var length = e.target.maxLength;
     var cursor = e.target.selectionStart;
 
-    
+    if (e.code === 'Tab') {
+        return;
+    }
+
     // Android doesnt support keycodes so we just do defauly behaviour
     if(e.code) {
         log('e code ' + e.code);
@@ -39,6 +42,8 @@ document.getElementById('meter-input').addEventListener('input', e => {
         return;
     }
     
+
+
     // Right arrow select next character
     if (e.code === 'ArrowRight') {
         cursor++;
