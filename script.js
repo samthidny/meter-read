@@ -23,7 +23,9 @@ document.getElementById('meter-input').addEventListener('focus', e => {
 
 document.getElementById('meter-input').addEventListener('keydown', e => {
 
-    if(!e.code) {
+    if(e.code) {
+        log('e code ' + e.code);
+    } else {
         log('device doesnt support keycodes');
         return;
     }
