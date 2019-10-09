@@ -16,15 +16,27 @@ textarea {
     height: 300px;
 }
 
-#meter-input {
+/* #meter-input {
     position: absolute;
     background-color: rgba(0,0,0,0.1);
     border: none;
+} */
+
+/* #meter-input-back {
+    position: absolute;
+    top: 0px;
+    color: gray;
+} */
+
+.input {
+    position: absolute;
+    left : 0px;
+    background-color: rgba(0,0,0,0);
+    border: none;  
 }
 
-#meter-input-back {
+.input-guide {
     position: absolute;
     top: 0px;
     color: gray;
 }
-
