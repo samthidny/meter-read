@@ -64,7 +64,8 @@ function setup(name) {
             var arr = event.target.value.split('');
             // insert blank where we just deleted
             arr.splice(cursor, 0, '_');
-            //event.target.maxLength++;
+            event.target.maxLength++;
+            console.log('maxLength ' + event.target.maxLength);
             //console.log('maxLength ' + event.target.maxLength);
             event.target.value = arr.join('');
             event.target.setSelectionRange(cursor, cursor);
@@ -72,13 +73,14 @@ function setup(name) {
 
         // MID DELETE A MARKER
         if (cursor < value.length && event.inputType === 'deleteContentBackward' && overlay.charAt(cursor) !== ' ') {
-            console.log('SCENARIO 4 - mid delete a marker');
+            console.log('SCENARIO 4 - mid delete a marker, also delete the character to its left');
             var arr = event.target.value.split('');
-            arr.splice(cursor, 0, overlay.charAt(cursor));
-            // event.target.maxLength++;
-            // console.log('maxLength ' + event.target.maxLength);
+            //debugger;
+            arr.splice(cursor-1, 1, '_', overlay.charAt(cursor));
             event.target.value = arr.join('');
-            event.target.setSelectionRange(cursor, cursor);
+            event.target.setSelectionRange(cursor-1, cursor-1);
+            event.target.maxLength++;
+            console.log('maxLength ' + event.target.maxLength);
         }
 
         // SCENARIO 5 - mid typing just before a marker, you just tried to type over a marker, so replace new char with marker
@@ -97,7 +99,10 @@ function setup(name) {
                 var arr = event.target.value.split('');
                 arr.splice(cursor, 1, deletedCharacter);
                 event.target.value = arr.join('');
-                event.target.setSelectionRange(cursor, cursor);
+                event.target.setSelectionRange(cursor + 1, cursor + 1);
+                event.target.maxLength--;
+                console.log('maxLength subtract');
+                console.log('maxLength ' + event.target.maxLength);
                 //debugger;
             }
 
@@ -106,29 +111,46 @@ function setup(name) {
 
 
         // SCENARIO 6 - attempt to type over a valid character
-        if (cursor < value.length && event.inputType === 'insertText' && overlay.charAt(cursor-1) === ' ') {
+        if (cursor < value.length && event.inputType === 'insertText' && overlay.charAt(cursor-1) === ' ' && value.charAt(cursor) !== '_' ) {
             console.log('SCENARIO 6 - you tried to type over a valid character: ' + value.charAt(cursor));
             // DELETE THIS NEW CHAR
             // TODO - DRY - deleteLastChar()
             var arr = event.target.value.split('');
             arr.splice(cursor-1, 1);
             event.target.value = arr.join('');
-            event.target.setSelectionRange(cursor-1, cursor-1);
             
         }
 
 
 
-        // // If you delete some chars from the end and then try to type mid text, only insert char if it is a DELETED
-        // if (cursor < value.length && event.inputType === 'insertText' && value.charAt(cursor) !== '_') {
-        //     console.log('ERROR!!!! YOU CANT TYPE HERE THIS WASNT DELETED ' + value.charAt(cursor));
-        //     // Delete current char
-        //     var arr = event.target.value.split('');
-        //     arr.splice(cursor, 1);
-        //     event.target.value = arr.join('');
-        //     event.target.setSelectionRange(cursor, cursor);
-        // }
+        // If you delete some chars from the end and then try to type mid text, only insert char if it is a DELETED
+        
+        if (cursor < value.length && event.inputType === 'insertText' && value.charAt(cursor) === '_') {
+            console.log('SCENARIO 7 - mid typing over a deleted character');
+            // Delete current char
+            var arr = event.target.value.split('');
+            arr.splice(cursor, 1);
+            event.target.value = arr.join('');
 
+            // If next is a marker then skip it
+            if(overlay.charAt(cursor) !== ' ') {
+                console.log('SCENARIO 7b mid typed but next char is a marker, so move cursor after marker');
+                event.target.setSelectionRange(cursor + 1, cursor + 1);
+            } else {
+                event.target.setSelectionRange(cursor, cursor);
+            }
+
+            // event.target.setSelectionRange(cursor, cursor);
+            event.target.maxLength--;
+            console.log('maxLength subtract');
+            console.log('maxLength ' + event.target.maxLength);
+        }
+
+        if(cursor > overlay.length) {
+            console.log('SCENARIO 8 - trying to type over borrowed maxChars, clip input to overlay.length (original maxchars)');
+            // Clip end chars off
+            event.target.value = event.target.value.substring(0, overlay.length);
+        }
 
         //INVALID covered by SCENARIO 5
         // If you have just typed on a marker and then you type, we need to add the slash back
@@ -139,30 +161,30 @@ function setup(name) {
         //     event.target.value = arr.join('');
         // }
 
-        // if typong over a mid deleted character
-        if (cursor < value.length && event.inputType === 'insertText' && overlay.charAt(cursor) === '_') {
-            console.log('NOWWWW!!!!');
-            var arr = event.target.value.split('');
-            arr.splice(arr.length - 1, 0, overlay.charAt(cursor - 1));
-            event.target.value = arr.join('');
-        }
+        // // if typong over a mid deleted character
+        // if (cursor < value.length && event.inputType === 'insertText' && overlay.charAt(cursor) === '_') {
+        //     console.log('NOWWWW!!!!');
+        //     var arr = event.target.value.split('');
+        //     arr.splice(arr.length - 1, 0, overlay.charAt(cursor - 1));
+        //     event.target.value = arr.join('');
+        // }
 
-        // If a valid character is typed over a mid deleted character
-        if (event.inputType === 'insertText' && value.charAt(cursor) === '_') {
-            // Delete current char
-            var arr = event.target.value.split('');
-            arr.splice(cursor, 1);
-            event.target.value = arr.join('');
-            event.target.setSelectionRange(cursor, cursor);
+        // // If a valid character is typed over a mid deleted character
+        // if (event.inputType === 'insertText' && value.charAt(cursor) === '_') {
+        //     // Delete current char
+        //     var arr = event.target.value.split('');
+        //     arr.splice(cursor, 1);
+        //     event.target.value = arr.join('');
+        //     event.target.setSelectionRange(cursor, cursor);
 
-            console.log('REMOVE THE DELETED CHAR next char ' + overlay.charAt(cursor));
-            // If next char is a marker then move cursor on by 1
-            if (overlay.charAt(cursor) !== ' ') {
-                event.target.setSelectionRange(cursor + 1, cursor + 1);
-            }
+        //     console.log('REMOVE THE DELETED CHAR next char ' + overlay.charAt(cursor));
+        //     // If next char is a marker then move cursor on by 1
+        //     if (overlay.charAt(cursor) !== ' ') {
+        //         event.target.setSelectionRange(cursor + 1, cursor + 1);
+        //     }
 
-            event.target.maxLength--;
-        }
+        //     //event.target.maxLength--;
+        // }
 
 
 
