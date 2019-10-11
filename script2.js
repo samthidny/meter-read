@@ -203,6 +203,6 @@ function setup(name) {
     fillPlaceholder(document.getElementById(name), document.getElementById(`${name}-back`), guide);
 }
 
-setup('meter-input');
-setup('dob-input');
+// setup('meter-input');
+// setup('dob-input');
 setup('sort-input');
