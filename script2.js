@@ -152,42 +152,6 @@ function setup(name) {
             event.target.value = event.target.value.substring(0, overlay.length);
         }
 
-        //INVALID covered by SCENARIO 5
-        // If you have just typed on a marker and then you type, we need to add the slash back
-        // eg 
-        // if (event.inputType === 'insertText' && overlay.charAt(cursor - 1) !== ' ') {
-        //     var arr = event.target.value.split('');
-        //     arr.splice(arr.length - 1, 0, overlay.charAt(cursor - 1));
-        //     event.target.value = arr.join('');
-        // }
-
-        // // if typong over a mid deleted character
-        // if (cursor < value.length && event.inputType === 'insertText' && overlay.charAt(cursor) === '_') {
-        //     console.log('NOWWWW!!!!');
-        //     var arr = event.target.value.split('');
-        //     arr.splice(arr.length - 1, 0, overlay.charAt(cursor - 1));
-        //     event.target.value = arr.join('');
-        // }
-
-        // // If a valid character is typed over a mid deleted character
-        // if (event.inputType === 'insertText' && value.charAt(cursor) === '_') {
-        //     // Delete current char
-        //     var arr = event.target.value.split('');
-        //     arr.splice(cursor, 1);
-        //     event.target.value = arr.join('');
-        //     event.target.setSelectionRange(cursor, cursor);
-
-        //     console.log('REMOVE THE DELETED CHAR next char ' + overlay.charAt(cursor));
-        //     // If next char is a marker then move cursor on by 1
-        //     if (overlay.charAt(cursor) !== ' ') {
-        //         event.target.setSelectionRange(cursor + 1, cursor + 1);
-        //     }
-
-        //     //event.target.maxLength--;
-        // }
-
-
-
 
         // End template format test
 

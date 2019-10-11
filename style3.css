@@ -1,0 +1,42 @@
+body {
+    background-color: pink;
+}
+
+input {
+    height: 80px;
+    width: 800px;
+    font-size: 48px;
+    font-family: monospace;
+    letter-spacing: 0.5em;
+}
+
+
+textarea {
+    width: 800px;
+    height: 300px;
+}
+
+/* #meter-input {
+    position: absolute;
+    background-color: rgba(0,0,0,0.1);
+    border: none;
+} */
+
+/* #meter-input-back {
+    position: absolute;
+    top: 0px;
+    color: gray;
+} */
+
+.input {
+    position: absolute;
+    left : 0px;
+    background-color: rgba(0,0,0,0);
+    border: none;  
+}
+
+.input-guide {
+    position: absolute;
+    top: 0px;
+    color: gray;
+}
