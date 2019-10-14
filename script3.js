@@ -119,7 +119,8 @@ function setup(name) {
 
             
 
-            if(isOnMarker && isAdding) { 
+            if(isOnMarker && isAdding && isAtEnd) { 
+                console.log('Adding extra marker on the end!');
                 str += '-';
             }
             
