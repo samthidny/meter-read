@@ -96,15 +96,18 @@ function setup(name) {
 
         // Jons suggested method, dont delete and leave spaces just treat as input but add markers
         
+        var separator = overlay.split(' ').join('').charAt(0);
+        console.log('SEPARATOR ' + separator);
+
         //if (event.inputType === 'insertText') {
             //Remove any existing markers
-            var chars = (event.target.value.indexOf('-') !== -1 ? event.target.value.split('-').join('') : event.target.value).split('');
+            var chars = (event.target.value.indexOf(separator) !== -1 ? event.target.value.split(separator).join('') : event.target.value).split('');
             console.log('FORMAT PRE  ' + chars);
             var str = '';
             var count = 0;
             chars.forEach((char, index) => {
                 if (overlay[count] !== ' ') {
-                    str += "-";
+                    str += overlay[count];
                     count++;
                     //newCursor = cursor + 1;
                 }
@@ -122,13 +125,13 @@ function setup(name) {
             // If adding to the end of the string and there should be a marker next
             if(isOnMarker && isAdding && isAtEnd) { 
                 console.log('Adding extra marker on the end!');
-                str += '-';
+                str += overlay.charAt(str.length);
             }
             
             // If adding or deleting in the middle and the last char should be a marker then add it.
             if(isMid && overlay.charAt(str.length) !== ' ') {
                 console.log('*** Add hyphen here!!!!');
-                str += '-';
+                str += overlay.charAt(str.length);
             }
             
 
@@ -171,6 +174,6 @@ function setup(name) {
     fillPlaceholder(document.getElementById(name), document.getElementById(`${name}-back`), guide);
 }
 
-// setup('meter-input');
-// setup('dob-input');
+setup('meter-input');
+setup('dob-input');
 setup('sort-input');
