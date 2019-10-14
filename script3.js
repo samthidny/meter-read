@@ -119,8 +119,15 @@ function setup(name) {
 
             
 
+            // If adding to the end of the string and there should be a marker next
             if(isOnMarker && isAdding && isAtEnd) { 
                 console.log('Adding extra marker on the end!');
+                str += '-';
+            }
+            
+            // If adding or deleting in the middle and the last char should be a marker then add it.
+            if(isMid && overlay.charAt(str.length) !== ' ') {
+                console.log('*** Add hyphen here!!!!');
                 str += '-';
             }
             
