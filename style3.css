@@ -1,15 +1,28 @@
 body {
-    background-color: pink;
+    background-color: white;
 }
 
 input {
     height: 80px;
     width: 800px;
-    font-size: 48px;
+    font-size: 2em !important;
     font-family: monospace;
     letter-spacing: 0.5em;
+
+    box-shadow: unset;
+    outline: unset;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    padding: .4em .8em;
+    border: .15em solid #888b8d;
+    border-radius: 0 .5em .5em;
+    max-width: 32em;
 }
 
+input:focus {
+    border: .15em solid #0000CC;
+}
 
 textarea {
     width: 800px;
