@@ -2,6 +2,10 @@ console.log('index 2');
 
 var prevLengths = {};
 
+function setText(input, text) {
+    input.value = text;
+}
+
 function fillPlaceholder(input, back, guide) {
     var length = input.value.length;
     var maxlength = input.maxLength;
@@ -57,7 +61,8 @@ function setup(name) {
         // // Adding a character at the end of the text, when next character is a marker then insert marker and move cursor on by 1
         if (isAdding && isAtEnd && isOnMarker) {
             console.log('SCENARIO 1 - adding a char and next char is marker so insert marker and move cursor right');
-            event.target.value += overlay.charAt(cursor);
+            //event.target.value += overlay.charAt(cursor);
+            setText(event.target, event.target.value + overlay.charAt(cursor))
             newCursor = cursor + 1;
         }
 
@@ -88,7 +93,8 @@ function setup(name) {
                 var diff = prev - event.target.value.length;
                 // If we're only deleting the marker then remove the prev char as well
                 if(diff === 1) {
-                    event.target.value = event.target.value.substring(0, event.target.value.length - 1);
+                    // event.target.value = event.target.value.substring(0, event.target.value.length - 1);
+                    setText(event.target, event.target.value.substring(0, event.target.value.length - 1));
                 }
             }
 
@@ -99,7 +105,8 @@ function setup(name) {
             console.log('SCENARIO 3 - deleting mid ' + event.target.value);
             var arr = event.target.value.split('');
             //arr.splice(cursor, 1);
-            event.target.value = arr.join('');
+            //event.target.value = arr.join('');
+            setText(event.target, arr.join(''));
             // newCursor = cursor;
         }
 
@@ -108,7 +115,8 @@ function setup(name) {
             console.log('SCENARIO 4 - deleting mid marker ' + event.target.value);
             var arr = event.target.value.split('');
             arr.splice(cursor-1, 1);
-            event.target.value = arr.join('');
+            //event.target.value = arr.join('');
+            setText(event.target, arr.join(''));
             newCursor = cursor - 1;
         }
 
@@ -157,21 +165,23 @@ function setup(name) {
 
             console.log('FORMAT POST ' + str);
             
-            event.target.value = str;
+            //event.target.value = str;
+            setText(event.target, str);
 
         // POST formatting functions
 
         if(isDeleting && isAtEnd && !isOnMarker && isMarkerLeft) {
             // Removed last character leaving a marker, re-add it
             console.log('SCENARIO 8');
-            event.target.value += overlay.charAt(cursor-1);
+            // event.target.value += overlay.charAt(cursor-1);
+            setText(event.target, event.target.value + overlay.charAt(cursor-1));
         }
 
 
         if (event.target.value.length > event.target.maxLength) {
             console.log('XXXX')
-            event.target.value = event.target.value.slice(0, event.target.maxLength);
-            
+            //event.target.value = event.target.value.slice(0, event.target.maxLength);
+            setText(event.target, event.target.value.slice(0, event.target.maxLength));
         }
 
         prevLengths[event.target] = event.target.value.length;
