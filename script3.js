@@ -1,5 +1,7 @@
 console.log('index 2');
 
+var prevLengths = {};
+
 function fillPlaceholder(input, back, guide) {
     var length = input.value.length;
     var maxlength = input.maxLength;
@@ -14,6 +16,13 @@ function fillPlaceholder(input, back, guide) {
     }
 
     back.value = str;
+}
+
+// Used to test if a character is a valid input character-  eg a number betweeen 0 - 9
+function isValidChar(char) {
+    var code = char.charCodeAt(0)
+    // is a number char
+    return code > 47 && code < 58;
 }
 
 function setup(name) {
@@ -39,9 +48,11 @@ function setup(name) {
         var isAtEnd = cursor === value.length;
         var isOnMarker = overlay.charAt(cursor) !== ' ';
         var isMarkerLeft = overlay.charAt(cursor-1) !== ' ';
+        // TODO - this assumes there is only one type of marker character eg / for dates
+        var separator = overlay.split(' ').join('').charAt(0);
+        console.log('SEPARATOR ' + separator);
 
         console.log(`isAdding: ${isAdding} - isAtEnd: ${isAtEnd} - isOnMarker: ${isOnMarker}`)
-
 
         // // Adding a character at the end of the text, when next character is a marker then insert marker and move cursor on by 1
         if (isAdding && isAtEnd && isOnMarker) {
@@ -68,8 +79,19 @@ function setup(name) {
 
         // If at end and deleting a marker
         if (isDeleting && isAtEnd && isOnMarker) {
-            console.log('SCENARIO 2 - deleting a marker so delte the markar and the char before');
-            event.target.value = event.target.value.substring(0, event.target.value.length - 1);
+            console.log('SCENARIO 2 - deleting a marker so delte the markr and the char before');
+            // Check what character we are about to delete, this is a bug that if you highlight a marker and then delete
+            var charToDelete = event.target.value.charAt(event.target.value.length - 1);
+            console.log('DO WE REMOVE: ' + charToDelete + ' ' + isValidChar(charToDelete));
+            if(prevLengths[event.target]) {
+                var prev = prevLengths[event.target];
+                var diff = prev - event.target.value.length;
+                // If we're only deleting the marker then remove the prev char as well
+                if(diff === 1) {
+                    event.target.value = event.target.value.substring(0, event.target.value.length - 1);
+                }
+            }
+
         }
 
         //mid deletion over char
@@ -96,8 +118,6 @@ function setup(name) {
 
         // Jons suggested method, dont delete and leave spaces just treat as input but add markers
         
-        var separator = overlay.split(' ').join('').charAt(0);
-        console.log('SEPARATOR ' + separator);
 
         //if (event.inputType === 'insertText') {
             //Remove any existing markers
@@ -139,15 +159,6 @@ function setup(name) {
             
             event.target.value = str;
 
-            // if (cursor === event.target.value.length) {
-            //     newCursor = cursor + 1;
-            //     // event.target.setSelectionRange(cursor + 1, cursor + 1);
-            // } else {
-            //     // event.target.setSelectionRange(cursor, cursor);
-            // }
-        //}
-
-
         // POST formatting functions
 
         if(isDeleting && isAtEnd && !isOnMarker && isMarkerLeft) {
@@ -162,6 +173,8 @@ function setup(name) {
             event.target.value = event.target.value.slice(0, event.target.maxLength);
             
         }
+
+        prevLengths[event.target] = event.target.value.length;
 
         console.log('Set Cursor on ' + newCursor);
         event.target.setSelectionRange(newCursor, newCursor);
