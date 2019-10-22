@@ -3,7 +3,14 @@ console.log('index 2');
 var prevLengths = {};
 
 function setText(input, text) {
-    input.value = text;
+    // input.value = text;
+    // input.setSelectionRange(0, input.value.length);
+    input.select();
+    // https://stackoverflow.com/a/55174561/288906
+	if (!document.execCommand('insertText', false, text)) {
+		input.setRangeText(text);
+	}
+    //input.setRangeText(text);
 }
 
 function fillPlaceholder(input, back, guide) {
