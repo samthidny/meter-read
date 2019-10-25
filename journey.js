@@ -11,14 +11,22 @@ function show(element, visible) {
     element.style.display = visible ? 'block' : 'none';
 }
 
-document.getElementById('find-address-button').addEventListener('click', () => {
+document.getElementById('find-address-button').addEventListener('click', (event) => {
+    var button = event.target;
+    button.setAttribute('loading', 'true');
+    button.setAttribute('loadingmessage', 'Loading...');
+    button.setAttribute('disabled', 'true');
     setTimeout(() => {
         console.log('SHOW IT!!!')
-        show(document.getElementById('address-selector'), true);
+        button.removeAttribute('loading');
+        button.removeAttribute('loadingmessage');
+        button.removeAttribute('disabled');
+        scrollTo(document.getElementById('address-selector'));
+        // show(document.getElementById('address-selector'), true);
     }, 600);
 });
 
-document.getElementById('address-select').addEventListener('change', () => {
+document.querySelector('.address-select').addEventListener('change', () => {
     scrollTo(document.getElementById('q1'));
 });
 
@@ -43,7 +51,7 @@ document.getElementById('submit-button').addEventListener('click', () => {
 
 
 function populateAddresses() {
-    var select = document.getElementById('address-select');
+    var select = document.querySelector('.address-select');
     var road = 'Kings Road, Townsford, Surrey, AB12 3CD';
     var number = 63;
     for(var i = 0; i < 10; i++) {
