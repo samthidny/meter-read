@@ -66,17 +66,16 @@ function populateAddresses() {
 
 
 function init() {
-    show(document.getElementById('address-selector'), false);
-    show(document.getElementById('q1'), false);
-    show(document.getElementById('q2'), false);
+    // show(document.getElementById('address-selector'), false);
+    // show(document.getElementById('q1'), false);
+    // show(document.getElementById('q2'), false);
     
-    populateAddresses();
+    // populateAddresses();
 
     document.querySelectorAll('#gas-meter-inputter').forEach((inputter) => {
         inputter.addEventListener('change', (event) => {
-            console.log('Meter read change ' + event.target.value);
             var str = '' + event.target.value;
-            if (str.charAt(0) !== 0 || str[1] !== 0) {
+            if (!(str.length < 2) && (str.charAt(0) !== '0' || str[1] !== '0')) {
                 console.log('WARNING!!!! TOLERANCE!!!!');
             }
         });
