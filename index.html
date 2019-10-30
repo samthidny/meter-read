@@ -180,11 +180,13 @@
 
                 <span class="h1 enlighten"><b>Opening meter reading</b></span>
             </h1>
-            <p slot="paragraph">Let's get you set up on the right foot.</p>
+            <p slot="paragraph">Let's get you set up on the right foot...</p>
+            
         </ns-landmark>
 
         <ns-panel>
             <div class="splash">
+                
                 <h2 class="h2 enlighten"><b>Your address</b></h2>
                 <p class="p-normal">This is the address where you requested to switch to British Gas as your energy
                     supplier.</p>
@@ -252,23 +254,38 @@
                     estimated
                     in the future.</p>
 
-                <ns-inputter id="gas-meter-inputter" validation='["isRequired"]' value=""
+                <!-- <ns-inputter id="gas-meter-inputter" validation='["isRequired"]' value=""
                     helper="Enter your meter reading including any zeros at the beginning. Ignore the red numbers and anything after a decimal point."
                     name="gas-meter-reading">
-                    <ns-meter-read mask="  -  -  " guide="00-00-00" maxlength="8">
+                    <ns-meter-read mask="" guide="00---" maxlength="5">
                         <label for="input">Gas meter reading</label>
-                        <input id="input" type="text">
+                        <input id="input" pattern="\d*" inputmode="numeric" maxlength="5">
                     </ns-meter-read>
                 </ns-inputter>
 
                 <ns-inputter id="electricity-meter-inputter" validation='["isRequired"]' value=""
                     helper="Enter your meter reading including any zeros at the beginning. Ignore the red numbers and anything after a decimal point."
                     name="electricity-meter-reading">
-                    <ns-meter-read mask="  -  -  " guide="00-00-00" maxlength="8">
-                        <label for="input">Electricity meter reading</label>
-                        <input id="input" type="text">
+                    <ns-meter-read mask="" guide="00---" maxlength="5">
+                        <label for="input">Eletricity meter reading</label>
+                        <input id="input" pattern="\d*" inputmode="numeric" maxlength="5">
+                    </ns-meter-read>
+                </ns-inputter> -->
+
+                <ns-inputter validation='["isRequired"]' helper="Prepopulating with two zero's" name="gas-meter-inputter">
+                    <ns-meter-read guide="00---">
+                        <label>Gas meter reading</label>
+                        <input type="text" value="" pattern="d*" inputmode="numeric" maxlength="5">
                     </ns-meter-read>
                 </ns-inputter>
+                
+                <ns-inputter validation='["isRequired"]' helper="Prepopulating with two zero's" name="electricity-meter-inputter">
+                    <ns-meter-read guide="00---">
+                        <label>Electricity meter reading</label>
+                        <input type="text" value="" pattern="d*" inputmode="numeric" maxlength="5">
+                    </ns-meter-read>
+                </ns-inputter>
+
 
                 <p class="p-normal">By <b>clicking "Submit meter reading"</b> you can confirm that you live at the
                     chosen address and the opening meter readings you have provided are correct to the best of your
@@ -280,6 +297,9 @@
             </div>
         </ns-panel>
         <ns-footer></ns-footer>
+
+        <script type="text/javascript" src="https://nucleus.bgdigital.xyz/feature/meter-read/nucleus.min.js"></script>
+        
         <script type="text/javascript" src="nucleus/dist/polyfill.js"></script>
         <script type="text/javascript" src="nucleus/dist/components.js"></script>
         <script src="journey.js"></script>
