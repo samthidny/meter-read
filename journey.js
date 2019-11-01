@@ -1,10 +1,11 @@
 
 function scrollTo(element) {
     show(element, true);
-    element.scrollIntoView({
+    element.scrollIntoView();
+    /*{
         block: "start",
         behavior: "smooth"
-    });
+    }*/
 }
 
 function show(element, visible) {
@@ -66,11 +67,11 @@ function populateAddresses() {
 
 
 function init() {
-    // show(document.getElementById('address-selector'), false);
-    // show(document.getElementById('q1'), false);
-    // show(document.getElementById('q2'), false);
+    show(document.getElementById('address-selector'), false);
+    show(document.getElementById('q1'), false);
+    show(document.getElementById('q2'), false);
     
-    // populateAddresses();
+    populateAddresses();
 
     document.querySelectorAll('#gas-meter-inputter').forEach((inputter) => {
         inputter.addEventListener('change', (event) => {
