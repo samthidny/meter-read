@@ -39,11 +39,18 @@ document.getElementById('continue1').addEventListener('click', () => {
 
 document.getElementById('meter-readings-type').addEventListener('change', (event) => {
     show(document.getElementById('ecomony-seven'), event.target.value !== 'gas');
+    
     // Default just show ingle elec
     show(document.getElementById('electricity-meter-reading'), event.target.value !== 'gas');
 
     // hide gas if elec only
     show(document.getElementById('gas-meter-reading'), event.target.value !== 'electricity');
+
+    // If its gas only hide all elec meters
+    if (event.target.value === 'gas') {
+        show(document.getElementById('electricity-meter-reading'), false);
+        show(document.getElementById('economy7-meter-readings'), false);
+    }
     
 });
 
@@ -51,7 +58,6 @@ document.getElementById('meter-readings-type').addEventListener('change', (event
 document.getElementById('ecomony-seven').addEventListener('change', (event) => {
     show(document.getElementById('electricity-meter-reading'), event.target.value === 'no');
     show(document.getElementById('economy7-meter-readings'), event.target.value === 'yes');
-
 
 
 });
