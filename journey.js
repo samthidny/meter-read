@@ -39,8 +39,22 @@ document.getElementById('continue1').addEventListener('click', () => {
 
 document.getElementById('meter-readings-type').addEventListener('change', (event) => {
     show(document.getElementById('ecomony-seven'), event.target.value !== 'gas');
+    // Default just show ingle elec
+    show(document.getElementById('electricity-meter-reading'), event.target.value !== 'gas');
+
+    // hide gas if elec only
+    show(document.getElementById('gas-meter-reading'), event.target.value !== 'electricity');
+    
 });
 
+
+document.getElementById('ecomony-seven').addEventListener('change', (event) => {
+    show(document.getElementById('electricity-meter-reading'), event.target.value === 'no');
+    show(document.getElementById('economy7-meter-readings'), event.target.value === 'yes');
+
+
+
+});
 
 
 document.getElementById('submit-button').addEventListener('click', () => {
@@ -70,7 +84,10 @@ function init() {
     show(document.getElementById('address-selector'), false);
     show(document.getElementById('q1'), false);
     show(document.getElementById('q2'), false);
-    
+    show(document.getElementById('ecomony-seven'), false);
+    show(document.getElementById('electricity-meter-reading'), false);
+    show(document.getElementById('economy7-meter-readings'), false);
+
     populateAddresses();
 
     document.querySelectorAll('#gas-meter-inputter').forEach((inputter) => {
