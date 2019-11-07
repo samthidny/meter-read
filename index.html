@@ -7,6 +7,14 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="nucleus/dist/styles.min.css">
+    <style>
+    
+        .summary {
+            height: 60px;
+            border: 1px solid black;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -176,136 +184,171 @@
 
         <ns-landmark type="hillside" gradient="invert-ramp-cyan">
             <h1 slot="heading">
-                <span class="h5">Let’s make sure your account’s up to date.</span>
+                <span class="h5">Welcome to British Gas.</span>
                 <span class="h1 enlighten">Your first <b>meter reading</b></span>
             </h1>
-            <p slot="paragraph">Let’s make sure your account’s up to date</p>
+            <p slot="paragraph">It's important that we receive your opening meter readings promptly to provide accurate billing.</p>
         </ns-landmark>
 
         <ns-panel>
             <div class="splash">
                 <h2>Before we get started </h2>
-                <p>To make sure we get you properly set up, we need to check the following applies:</p>
+                <p>To get your account properly set up, make sure that one of the following applies:</p>
                 <ul class="ul-bullet">
-                    <li>You’re due to switch to us in the next five days – or your supply with us started in the last
-                        five days</li>
-                    <li>Or we’ve recently been in touch with you to ask for your opening meter reading </li>
+                    <li>You’re due to switch to us in the next five days.</li>
+                    <li>You’re supply with us started in the last five days.</li>
+                    <li>We’ve recently been in touch with you to ask for your opening meter reading.</li>
                 </ul>
+            </div>
+        <!-- </ns-panel> -->
 
-                <h2 class="h2 enlighten"><b>Tell us your address</b></h2>
-                <p class="p-normal">This is the address where you requested to switch to British Gas as your energy
-                    supplier.</p>
+        <!-- <ns-panel> -->
+            <div class="splash">
+                <h2 class="h2 enlighten"><b>The address</b></h2>
+            </div>
+            <ns-form-summary id="address-form-summary"></ns-form-summary>
+            <ns-form id="address-form">
+                <div class="splash">
+                    <p class="p-normal">Tell us the address that you requested to switch to British Gas</p>
 
-                <ns-inputter validation='["isPostcode"]' helper="">
-                    <label slot="label">Postcode</label>
-                    <input type="text" placeholder="e.g. PO57 0DE" name="postcode" autocomplete="postal-code">
-                </ns-inputter>
-
-                <ns-cta id="find-address-button" type="direct" href="" icon="arrow-right" loading="false"
-                    loadingmessage="Loading...">Find your address</ns-cta>
-
-                <div id="address-selector">
-                    <ns-inputter validation="[&quot;isRequired&quot;]" heading="" helper="" name="-">
-                        <label slot="label" for="l6ghmdnzmbo-input"> </label>
-
-                        <select class="address-select" name="select" id="l6ghmdnzmbo-input">
-                            <option value="">Please Select</option>
-                        </select>
+                    <ns-inputter validation='["isPostcode"]' helper="">
+                        <label slot="label">Postcode</label>
+                        <input type="text" placeholder="e.g. PO57 0DE" name="postcode" autocomplete="postal-code">
                     </ns-inputter>
-                    <ns-cta type="text" href="#!" icon="arrow-right" loading="false" loadingmessage="Loading...">
-                        Can't
-                        find
-                        your address</ns-cta>
+
+                    <ns-cta id="find-address-button" type="direct" href="" icon="arrow-right" loading="false"
+                        loadingmessage="Loading...">Find your address</ns-cta>
+
+                    <div id="address-selector">
+                        <ns-inputter validation="[&quot;isRequired&quot;]" heading="" helper="" name="-">
+                            <label slot="label" for="l6ghmdnzmbo-input"> </label>
+
+                            <select class="address-select" name="select" id="l6ghmdnzmbo-input">
+                                <option value="">Please Select</option>
+                            </select>
+                        </ns-inputter>
+                        <ns-cta type="text" href="#!" icon="arrow-right" loading="false" loadingmessage="Loading...">
+                            Can't
+                            find
+                            your address?</ns-cta>
+                    </div>
                 </div>
-            </div>
-        </ns-panel>
+            </ns-form>
+        <!-- </ns-panel> -->
 
-        <ns-panel id="q1">
+        
+            <!-- <ns-panel id="q1"> -->
+                <div class="splash">
+                    <h2 class="h2 enlighten"><b>Which energy services are you switching over to us?</b></h2>
+                </div>
+                <ns-form-summary id="fuel-type-form-summary"></ns-form-summary>
+                <ns-form id="fuel-type-form">
+                    <div class="splash">
+                        <ns-inputter id="meter-readings-type" name="fuel-type" validation="[&quot;isRequired&quot;]"
+                            heading="Which energy you’re switching over to us" helper="" name="yes">
+                            <input type="radio" id="question-Gas" name="question" value="gas">
+                            <label for="question-Gas">Gas only</label>
+                            <input type="radio" id="question-Ele" name="question" value="electricity">
+                            <label for="question-Ele">Electricity only</label>
+                            <input type="radio" id="question-DF" name="question" value="both">
+                            <label for="question-DF">Gas and electricity</label>
+                        </ns-inputter>
+
+                        <section id="ecomony-seven">
+                            <ns-inputter name="economy-seven"  validation="[&quot;isRequired&quot;]"
+                                heading="Is your electricity meter Economy 7?"
+                                helper="That’s when your meter has two sets of meter readings instead of one. They will be labelled high, normal or low, day or night, or rate one and rate two."
+                                name="yes">
+                                <input type="radio" id="question-no" name="question2" value="no">
+                                <label for="question-no">No</label>
+                                <input type="radio" id="question-yes" name="question2" value="yes">
+                                <label for="question-yes">Yes</label>
+                            </ns-inputter>
+                        </section>
+                        <ns-cta id="fuel-type-submit" type="direct" href="" icon="arrow-right" loading="false"
+                            loadingmessage="Loading...">Continue to next step</ns-cta>
+                    </div>
+                </ns-form>
+
+            <!-- </ns-panel> -->
+        </ns-form>
+
+
+        <!-- <ns-panel id="q2"> -->
             <div class="splash">
-                <ns-inputter id="meter-readings-type" validation="[&quot;isRequired&quot;]"
-                    heading="Which energy you’re switching over to us" helper="" name="yes">
-                    <input type="radio" id="question-Gas" name="question" value="gas" checked="">
-                    <label for="question-Gas">Gas only</label>
-                    <input type="radio" id="question-Ele" name="question" value="electricity">
-                    <label for="question-Ele">Electricity only</label>
-                    <input type="radio" id="question-DF" name="question" value="both">
-                    <label for="question-DF">Gas and electricity</label>
-                </ns-inputter>
-
-                <ns-inputter id="ecomony-seven" validation="[&quot;isRequired&quot;]"
-                    heading="Is your electricity meter Economy 7?"
-                    helper="That’s when your meter has two sets of meter readings instead of one. They will be labelled high, normal or low, day or night, or rate one and rate two."
-                    name="yes">
-                    <input type="radio" id="question-no" name="question2" value="no" checked="">
-                    <label for="question-no">No</label>
-                    <input type="radio" id="question-yes" name="question2" value="yes">
-                    <label for="question-yes">Yes</label>
-                </ns-inputter>
-
-                <ns-cta id="continue1" type="direct" href="" icon="arrow-right" loading="false"
-                    loadingmessage="Loading...">Continue to next step</ns-cta>
-            </div>
-        </ns-panel>
-
-        <ns-panel id="q2">
-            <div class="splash">
-
-
-
                 <h2 class="h2 enlighten"><b>Your opening meter reading</b></h2>
-                <p class="p-normal">Giving us your meter reading(s) helps us to accurately estimate your bill so we
-                    don’t overcharge you.</p>
+            </div>
+            <ns-form-summary id="meter-reading-form-summary"></ns-form-summary>
+            <ns-form id="meter-reading-form">
+            
+                <div class="splash">
+                    <section id="gas-meter-reading">
+                        <ns-inputter validation='["isRequired"]'
+                        helper="How do I provide my gas meter reading?">
+                            <div slot="tip-details">Enter your meter reading including any zeros at the beginning. Ignore the red numbers and anything after the decimal point</div>    
+                            <label slot="label">Gas meter reading</label>
+                            <ns-meter-read guide="00---">
+                                <input type="text" value="" pattern="d*" inputmode="numeric" maxlength="5">
+                            </ns-meter-read>
+                        </ns-inputter>
+                    </section>
+                    <section id="electricity-meter-reading">
+                        <ns-inputter validation='["isRequired"]'
+                            helper="How do I provide my electricity meter reading?">
+                            <div slot="tip-details">Enter your meter reading including any zeros at the beginning. Ignore the red numbers and anything after the decimal point</div>
+                            <label slot="label">Electricity meter reading</label>
+                            <ns-meter-read guide="00---">
+                                <input type="text" value="" pattern="d*" inputmode="numeric" maxlength="5">
+                            </ns-meter-read>
+                        </ns-inputter>
 
-                <section id="gas-meter-reading">
-                    <ns-inputter validation='["isRequired"]'
-                    helper="Enter your meter reading including any zeros at the beginning. Ignore the red numbers and anything after the decimal point" id="gas-meter-inputter">
-                        <label slot="label">Gas meter reading</label>
-                        <ns-meter-read guide="00---">
-                            <input type="text" value="" pattern="d*" inputmode="numeric" maxlength="5">
-                        </ns-meter-read>
-                    </ns-inputter>
-                </section>
-                <section id="electricity-meter-reading">
-                    <ns-inputter validation='["isRequired"]'
-                        helper="Enter your meter reading including any zeros at the beginning. Ignore the red numbers and anything after the decimal point">
-                        <label slot="label">Electricity meter reading</label>
-                        <ns-meter-read guide="00---">
-                            <input type="text" value="" pattern="d*" inputmode="numeric" maxlength="5">
-                        </ns-meter-read>
-                    </ns-inputter>
+                    </section>
+                    <section id="economy7-meter-readings">
+                        <ns-inputter validation='["isRequired"]'
+                        helper="How do I provide my electricity meter reading?">
+                        <div slot="tip-details">Enter your meter reading including any zeros at the beginning. Ignore the red numbers and anything after the decimal point</div>
+                            <label slot="label">Electricity meter reading (day)</label>
+                            <ns-meter-read guide="00---">
+                                <input type="text" value="" pattern="d*" inputmode="numeric" maxlength="5">
+                            </ns-meter-read>
+                        </ns-inputter>
 
-                </section>
-                <section id="economy7-meter-readings">
-                    <ns-inputter validation='["isRequired"]'
-                        helper="Enter your meter reading including any zeros at the beginning. Ignore the red numbers and anything after the decimal point">
-                        <label slot="label">Electricity meter reading (day)</label>
-                        <ns-meter-read guide="00---">
-                            <input type="text" value="" pattern="d*" inputmode="numeric" maxlength="5">
-                        </ns-meter-read>
-                    </ns-inputter>
+                        <ns-inputter validation='["isRequired"]'
+                        helper="How do I provide my electricity meter reading?">
+                        <div slot="tip-details">Enter your meter reading including any zeros at the beginning. Ignore the red numbers and anything after the decimal point</div>
+                            <label slot="label">Electricity meter reading (night)</label>
+                            <ns-meter-read guide="00---">
+                                <input type="text" value="" pattern="d*" inputmode="numeric" maxlength="5">
+                            </ns-meter-read>
+                        </ns-inputter>
+                    </section>
 
-                    <ns-inputter validation='["isRequired"]'
-                        helper="Enter your meter reading including any zeros at the beginning. Ignore the red numbers and anything after the decimal point">
-                        <label slot="label">Electricity meter reading (night)</label>
-                        <ns-meter-read guide="00---">
-                            <input type="text" value="" pattern="d*" inputmode="numeric" maxlength="5">
-                        </ns-meter-read>
-                    </ns-inputter>
-                </section>
+                    <ns-cta id="meter-reading-submit" type="direct" href="" icon="arrow-right" loading="false"
+                        loadingmessage="Loading...">Next step</ns-cta>
 
+                </div>
+            
+            </ns-form>
+        <!-- </ns-panel> -->
+        <!-- <ns-panel> -->
+                <ns-form-summary id="summary-form-summary"></ns-form-summary>
+            <div id="summary-form">
                 <p class="p-normal">By clicking below you’ll confirm that you live at the chosen address and that the
-                    above meter readings are correct to the best of your knowledge.</p>
+                        above meter readings are correct to the best of your knowledge.</p>
                 <ns-cta id="submit-button" type="direct" href="" icon="arrow-right" loading="false"
                     loadingmessage="Loading...">Submit meter reading</ns-cta>
+            </div>  
+        <!-- </ns-panel> -->
 
-            </div>
-        </ns-panel>
         <ns-footer></ns-footer>
 
-        <script type="text/javascript" src="https://nucleus.bgdigital.xyz/feature/meter-read/nucleus.min.js"></script>
+        <!-- For online version -->
+        <!-- <script type="text/javascript" src="https://nucleus.bgdigital.xyz/feature/meter-read/nucleus.min.js"></script> -->
 
-        <!-- <script type="text/javascript" src="nucleus/dist/polyfill.js"></script>
-        <script type="text/javascript" src="nucleus/dist/components.js"></script> -->
+        <!-- For local dev -->
+        <script type="text/javascript" src="nucleus/dist/polyfill.js"></script>
+        <script type="text/javascript" src="nucleus/dist/components.js"></script>
+        
         <script src="journey.js"></script>
         <div id="base" class="">
         </div>
