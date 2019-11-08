@@ -203,11 +203,12 @@
         <!-- </ns-panel> -->
 
         <!-- <ns-panel> -->
-            <div class="splash">
-                <h2 class="h2 enlighten"><b>The address</b></h2>
-            </div>
-            <ns-form-summary id="address-form-summary"></ns-form-summary>
+
+            <ns-form-summary id="address-form-summary" title="Address"></ns-form-summary>
             <ns-form id="address-form">
+                <div class="splash">
+                    <h2 class="h2 enlighten"><b>The address</b></h2>
+                </div>
                 <div class="splash">
                     <p class="p-normal">Tell us the address that you requested to switch to British Gas</p>
 
@@ -220,6 +221,7 @@
                         loadingmessage="Loading...">Find your address</ns-cta>
 
                     <div id="address-selector">
+                        
                         <ns-inputter validation="[&quot;isRequired&quot;]" heading="" helper="" name="-">
                             <label slot="label" for="l6ghmdnzmbo-input"> </label>
 
@@ -227,6 +229,10 @@
                                 <option value="">Please Select</option>
                             </select>
                         </ns-inputter>
+
+                        <ns-cta class="select-address-button" type="direct" href="" icon="arrow-right" loading="false">Use this address</ns-cta>
+
+
                         <ns-cta type="text" href="#!" icon="arrow-right" loading="false" loadingmessage="Loading...">
                             Can't
                             find
@@ -238,11 +244,11 @@
 
         
             <!-- <ns-panel id="q1"> -->
-                <div class="splash">
-                    <h2 class="h2 enlighten"><b>Which energy services are you switching over to us?</b></h2>
-                </div>
-                <ns-form-summary id="fuel-type-form-summary"></ns-form-summary>
+                <ns-form-summary id="fuel-type-form-summary" title="Products that you are switching"></ns-form-summary>
                 <ns-form id="fuel-type-form">
+                    <div class="splash">
+                        <h2 class="h2 enlighten"><b>Which energy services are you switching over to us?</b></h2>
+                    </div>
                     <div class="splash">
                         <ns-inputter id="meter-readings-type" name="fuel-type" validation="[&quot;isRequired&quot;]"
                             heading="Which energy you’re switching over to us" helper="" name="yes">
@@ -275,12 +281,11 @@
 
 
         <!-- <ns-panel id="q2"> -->
-            <div class="splash">
-                <h2 class="h2 enlighten"><b>Your opening meter reading</b></h2>
-            </div>
-            <ns-form-summary id="meter-reading-form-summary"></ns-form-summary>
+            <ns-form-summary id="meter-reading-form-summary" title="Meter readings"></ns-form-summary>
             <ns-form id="meter-reading-form">
-            
+                <div class="splash">
+                    <h2 class="h2 enlighten"><b>Your opening meter reading</b></h2>
+                </div>
                 <div class="splash">
                     <section id="gas-meter-reading">
                         <ns-inputter validation='["isRequired"]'
@@ -331,7 +336,7 @@
             </ns-form>
         <!-- </ns-panel> -->
         <!-- <ns-panel> -->
-                <ns-form-summary id="summary-form-summary"></ns-form-summary>
+                <!-- <ns-form-summary id="summary-form-summary"></ns-form-summary> -->
             <div id="summary-form">
                 <p class="p-normal">By clicking below you’ll confirm that you live at the chosen address and that the
                         above meter readings are correct to the best of your knowledge.</p>

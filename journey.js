@@ -90,13 +90,22 @@ var forms = ['address-form', 'fuel-type-form', 'meter-reading-form', 'summary-fo
 
 function showForm(name) {
     
-    forms.forEach((name) => {
+    var currentIndex = forms.indexOf(name);
+
+    forms.forEach((name, index) => {
         show(document.getElementById(`${name}`), false);
-        show(document.getElementById(`${name}-summary`), true);
+        var summary = document.getElementById(`${name}-summary`);
+        if (summary) {
+            // show summaries beforre this form only
+            show(summary, index < currentIndex);
+        }
     });
 
     show(document.getElementById(`${name}`), true);
-    show(document.getElementById(`${name}-summary`), false);
+    var summary = document.getElementById(`${name}-summary`);
+    if(summary) {
+        show(summary, false);
+    }
 
     // Scroll to form
     document.getElementById(`${name}`).scrollIntoView();
@@ -109,22 +118,27 @@ function setSummary(name, summary) {
 }
 
 function init() {
-    // show(document.getElementById('address-selector'), false);
-    // show(document.getElementById('q1'), false);
-    // show(document.getElementById('q2'), false);
-    // show(document.getElementById('ecomony-seven'), false);
-    // show(document.getElementById('electricity-meter-reading'), false);
-    // show(document.getElementById('economy7-meter-readings'), false);
 
     forms.forEach((name) => {
         var summary = document.getElementById(`${name}-summary`);
-        summary.addEventListener('click', (event) => {
-            var name = event.target.id.replace('-summary', '');
-            showForm(name);
-        });
+        if  (summary) {
+            summary.addEventListener('click', (event) => {
+                var name = event.target.id.replace('-summary', '');
+                showForm(name);
+            });
+        }
     });
 
     showForm('address-form');
+
+    // Hide all summaries
+    forms.forEach((name, index) => {
+        var summary = document.getElementById(`${name}-summary`);
+        if (summary) {
+            // show summaries beforre this form only
+            show(summary, false);
+        }
+    });
 
     populateAddresses();
 
@@ -141,8 +155,8 @@ function init() {
 init();
 
 // User selects an address
-document.querySelector('.address-select').addEventListener('change', (event) => {
-    setSummary('address-form-summary', `${event.target.value}`);
+document.querySelector('.select-address-button').addEventListener('click', (event) => {
+    setSummary('address-form-summary', `${document.querySelector('.address-select').value}`);
     showForm('fuel-type-form');
 });
 
