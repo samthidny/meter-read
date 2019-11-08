@@ -32,12 +32,13 @@ document.getElementById('find-address-button').addEventListener('click', (event)
     button.setAttribute('disabled', 'true');
     setTimeout(() => {
         console.log('SHOW IT!!!');
+        populateAddresses();
         button.removeAttribute('loading');
         button.removeAttribute('loadingmessage');
         button.removeAttribute('disabled');
         scrollTo(document.getElementById('address-selector'));
-        // show(document.getElementById('address-selector'), true);
-    }, 600);
+        show(document.getElementById('address-selector'), true);
+    }, 100);
 });
 
 
@@ -108,7 +109,12 @@ function showForm(name) {
     }
 
     // Scroll to form
+    console.log('SCROLL INTO VIEW ' + name);
     document.getElementById(`${name}`).scrollIntoView();
+    // setTimeout(() => {
+        
+    // }, 100);
+    
 
 }
 
@@ -140,7 +146,8 @@ function init() {
         }
     });
 
-    populateAddresses();
+    show(document.getElementById('address-selector'), false);
+    //populateAddresses();
 
     document.querySelectorAll('#gas-meter-inputter').forEach((inputter) => {
         inputter.addEventListener('change', (event) => {
@@ -185,8 +192,20 @@ document.getElementById('meter-reading-submit').addEventListener('click', () => 
     var form = document.getElementById('meter-reading-form');
     var validation = form.validate();
     
+    var trans = {
+        'gas-meter-reading': 'Gas meter reading',
+        'electricity-meter-reading': 'Electricity meter reading',
+        'electricity-meter-reading-(day)': 'Electricity meter reading (day)',
+        'electricity-meter-reading-(night)': 'Electricity meter reading (night)'
+    }
+
     if(validation.isValid) {
-        setSummary('fuel-type-form-summary', `Meter readings of 1234, 33456, 28728 etc`);
+        var summary = validation.fields.filter((field) => {
+            return field.input.validationEnabled;
+        }).map((field) => {
+            return trans[field.name] + ': ' + field.value;
+        }).join('. ');
+        setSummary('meter-reading-form-summary', summary);
         showForm('summary-form');
     }
 });
