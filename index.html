@@ -192,10 +192,10 @@
         <ns-panel>
             <div class="splash">
                 <h2>Before we get started </h2>
-                <p>To get your account properly set up, make sure that one of the following applies:</p>
+                <p>To get your account set up, make sure that one of the following applies:</p>
                 <ul class="ul-bullet">
                     <li>You’re due to switch to us in the next five days.</li>
-                    <li>You’re supply with us started in the last five days.</li>
+                    <li>Your supply with us started in the last five days.</li>
                     <li>We’ve recently been in touch with you to ask for your opening meter reading.</li>
                 </ul>
             </div>
@@ -241,15 +241,12 @@
             <ns-form-summary id="fuel-type-form-summary" title="Products that you are switching"></ns-form-summary>
             <ns-form id="fuel-type-form">
                 <div class="splash">
-                    <h2 class="h2 enlighten"><b>Which energy services are you switching over to us?</b></h2>
-                </div>
-                <div class="splash">
                     <ns-inputter id="meter-readings-type" name="fuel-type" validation="[&quot;isRequired&quot;]"
-                        heading="Which energy you’re switching over to us" helper="" name="yes">
+                        heading="Which energy services are you switching over to us?" helper="" name="yes">
                         <input type="radio" id="question-Gas" name="question" value="gas">
-                        <label for="question-Gas">Gas only</label>
+                        <label for="question-Gas">Gas</label>
                         <input type="radio" id="question-Ele" name="question" value="electricity">
-                        <label for="question-Ele">Electricity only</label>
+                        <label for="question-Ele">Electricity</label>
                         <input type="radio" id="question-DF" name="question" value="both">
                         <label for="question-DF">Gas and electricity</label>
                     </ns-inputter>
@@ -257,8 +254,9 @@
                     <section id="ecomony-seven">
                         <ns-inputter name="economy-seven" validation="[&quot;isRequired&quot;]"
                             heading="Is your electricity meter Economy 7?"
-                            helper="That’s when your meter has two sets of meter readings instead of one. They will be labelled high, normal or low, day or night, or rate one and rate two."
+                            helper="What is an economy 7 meter?"
                             name="yes">
+                            <div slot="tip-details">Economy 7 meters have two sets of meter readings instead of one. They will be labelled high, normal or low, day or night, or rate one and rate two.</div>
                             <input type="radio" id="question-no" name="question2" value="no">
                             <label for="question-no">No</label>
                             <input type="radio" id="question-yes" name="question2" value="yes">
@@ -292,7 +290,7 @@
                             <div slot="tip-details">Enter your meter reading including any zeros at the beginning.
                                 Ignore the red numbers and anything after the decimal point</div>
                             <label slot="label">Electricity meter reading</label>
-                            <ns-meter-read guide="00---">
+                            <ns-meter-read guide="1----">
                                 <input type="text" value="" pattern="d*" inputmode="numeric" maxlength="5">
                             </ns-meter-read>
                         </ns-inputter>
@@ -304,7 +302,7 @@
                             <div slot="tip-details">Enter your meter reading including any zeros at the beginning.
                                 Ignore the red numbers and anything after the decimal point</div>
                             <label slot="label">Electricity meter reading (day)</label>
-                            <ns-meter-read guide="00---">
+                            <ns-meter-read guide="-----">
                                 <input type="text" value="" pattern="d*" inputmode="numeric" maxlength="5">
                             </ns-meter-read>
                         </ns-inputter>
@@ -314,14 +312,14 @@
                             <div slot="tip-details">Enter your meter reading including any zeros at the beginning.
                                 Ignore the red numbers and anything after the decimal point</div>
                             <label slot="label">Electricity meter reading (night)</label>
-                            <ns-meter-read guide="00---">
+                            <ns-meter-read guide="0----">
                                 <input type="text" value="" pattern="d*" inputmode="numeric" maxlength="5">
                             </ns-meter-read>
                         </ns-inputter>
                     </section>
 
                     <ns-cta id="meter-reading-submit" type="direct" href="" icon="arrow-right" loading="false"
-                        loadingmessage="Loading...">Next step</ns-cta>
+                        loadingmessage="Loading...">Review details</ns-cta>
 
                 </div>
 
