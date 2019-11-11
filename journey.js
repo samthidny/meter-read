@@ -36,7 +36,7 @@ document.getElementById('find-address-button').addEventListener('click', (event)
         button.removeAttribute('loading');
         button.removeAttribute('loadingmessage');
         button.removeAttribute('disabled');
-        scrollTo(document.getElementById('address-selector'));
+        //scrollTo(document.getElementById('address-selector'));
         show(document.getElementById('address-selector'), true);
     }, 100);
 });
@@ -88,10 +88,16 @@ function populateAddresses() {
 }
 
 var forms = ['address-form', 'fuel-type-form', 'meter-reading-form', 'summary-form'];
+var maxIndex = -1;
 
 function showForm(name) {
     
+    console.log('name ' + name);
+
     var currentIndex = forms.indexOf(name);
+    if (currentIndex > maxIndex) {
+        maxIndex = currentIndex;
+    }
 
     forms.forEach((name, index) => {
         show(document.getElementById(`${name}`), false);
@@ -102,28 +108,33 @@ function showForm(name) {
         }
     });
 
+
+    // Previous summary
+    var prev = document.getElementById(`${forms[currentIndex - 1]}-summary`);
+    
+    if(prev) {
+        console.log('PREV ' + prev.id);
+        prev.scrollIntoView();
+    } else {
+        console.log('No prev found ' + name);
+    }
+
     show(document.getElementById(`${name}`), true);
     var summary = document.getElementById(`${name}-summary`);
     if(summary) {
+        console.log('SUMMARY ' + summary.id);
         show(summary, false);
     }
-
-    // Scroll to form
-    console.log('SCROLL INTO VIEW ' + name);
-    document.getElementById(`${name}`).scrollIntoView();
-    // setTimeout(() => {
-        
-    // }, 100);
-    
 
 }
 
 function setSummary(name, summary) {
-    // document.getElementById(`${name}`).querySelector('div').innerHTML = `<p>${summary}</p>`;
     document.getElementById(`${name}`).summary = `<p>${summary}</p>`;
 }
 
 function init() {
+
+    show(document.getElementById('ecomony-seven'), false);
 
     forms.forEach((name) => {
         var summary = document.getElementById(`${name}-summary`);
@@ -147,7 +158,6 @@ function init() {
     });
 
     show(document.getElementById('address-selector'), false);
-    //populateAddresses();
 
     document.querySelectorAll('#gas-meter-inputter').forEach((inputter) => {
         inputter.addEventListener('change', (event) => {

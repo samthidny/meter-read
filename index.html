@@ -275,7 +275,7 @@
                 </div>
                 <div class="splash">
                     <section id="gas-meter-reading">
-                        <ns-inputter validation='["isRequired"]' helper="How do I provide my gas meter reading?">
+                        <ns-inputter validation='["isRequired", "minLength(5)"]' OLDvalidation='["isRequired"]' helper="How do I provide my gas meter reading?">
                             <div slot="tip-details">Enter your meter reading including any zeros at the beginning.
                                 Ignore the red numbers and anything after the decimal point</div>
                             <label slot="label">Gas meter reading</label>
