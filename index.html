@@ -179,19 +179,19 @@
         <h3>The address</h3>
         <p class="p-normal">Tell us the address that you requested to switch to British Gas.</p>
         <ns-inputter validation='["isPostcode"]' helper="">
-          <label slot="label">Postcode</label>
+          <label slot="label">Enter your postcode</label>
           <input type="text" placeholder="e.g. PO57 0DE" name="postcode" autocomplete="postal-code">
         </ns-inputter>
-        <p><ns-cta id="find-address-button" type="direct" href="" icon="chevron-down" loading="false" loadingmessage="Loading...">Find your address</ns-cta></p>
+        <p><ns-cta id="find-address-button" type="direct" href="" icon="arrow-right" loading="false" loadingmessage="Loading...">Find your address</ns-cta></p>
         <div id="address-selector">
           <ns-inputter validation="[&quot;isRequired&quot;]">
-            <label slot="label">Choose your address</label>
+            <label slot="label">Select your address</label>
             <select class="address-select" name="select">
-              <option>Please Select</option>
+              <option>Please select</option>
             </select>
           </ns-inputter>
+          <p><ns-cta class="select-address-button" type="direct" href="" icon="arrow-right" loading="false">Continue</ns-cta></p>
           <p><ns-cta type="text" href="#!" icon="arrow-right" loading="false" loadingmessage="Loading...">Can't find your address?</ns-cta></p>
-          <p><ns-cta class="select-address-button" type="direct" href="" icon="arrow-right" loading="false">Use this address</ns-cta></p>
         </div>
       </ns-form>
     </ns-panel>

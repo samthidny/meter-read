@@ -109,16 +109,16 @@ function showForm(name) {
 
 
     // Previous summary
-    var prev = document.getElementById(`${forms[currentIndex - 1]}-summary`);
-    
-    if(prev) {
-        console.log('PREV ' + prev.id);
-        prev.scrollIntoView();
-    } else {
-        console.log('No prev found ' + name);
-    }
+    // var prev = document.getElementById(`${forms[currentIndex - 1]}-summary`); 
+    // if(prev) {
+    //     console.log('PREV ' + prev.id);
+    //     prev.scrollIntoView();
+    // } else {
+    //     console.log('No prev found ' + name);
+    // }
 
     show(document.getElementById(`${name}`), true);
+    document.getElementById(`${name}`).scrollIntoView();
     var summary = document.getElementById(`${name}-summary`);
     if(summary) {
         console.log('SUMMARY ' + summary.id);
