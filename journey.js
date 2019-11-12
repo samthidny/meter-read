@@ -16,7 +16,6 @@ function showSection(element, visible) {
     show(element, visible);
 
     console.log('showSection ' + element + ' ' + visible + ' ' + element.childElementCount);
-
     // Disable validation on all child inputters
     for (var i = 0; i < element.childElementCount; i++) {
         if(element.children[i].enableValidation) {
@@ -110,16 +109,16 @@ function showForm(name) {
 
 
     // Previous summary
-    var prev = document.getElementById(`${forms[currentIndex - 1]}-summary`);
-    
-    if(prev) {
-        console.log('PREV ' + prev.id);
-        prev.scrollIntoView();
-    } else {
-        console.log('No prev found ' + name);
-    }
+    // var prev = document.getElementById(`${forms[currentIndex - 1]}-summary`); 
+    // if(prev) {
+    //     console.log('PREV ' + prev.id);
+    //     prev.scrollIntoView();
+    // } else {
+    //     console.log('No prev found ' + name);
+    // }
 
     show(document.getElementById(`${name}`), true);
+    document.getElementById(`${name}`).scrollIntoView();
     var summary = document.getElementById(`${name}-summary`);
     if(summary) {
         console.log('SUMMARY ' + summary.id);
