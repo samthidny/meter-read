@@ -174,7 +174,7 @@
     </ns-editorial>
 
     <ns-panel>
-      <ns-form-summary class="splosh" id="address-form-summary" title="Address"></ns-form-summary>
+      <ns-form-summary class="splosh" id="address-form-summary" title="Address" changeMessage="Select a different address"></ns-form-summary>
       <ns-form class="splosh" id="address-form">
         <h3>The address</h3>
         <p class="p-normal">Tell us the address that you requested to switch to British Gas.</p>
@@ -207,15 +207,17 @@
           <input type="radio" id="question-DF" name="question" value="both">
           <label for="question-DF">Gas and electricity</label>
         </ns-inputter>
-        <ns-inputter id="ecomony-seven" name="economy-seven" validation="[&quot;isRequired&quot;]" heading="Is your electricity meter Economy 7?" helper="What is an economy 7 meter?">
-          <div slot="tip-details">
-            <p>Economy 7 meters have two sets of meter readings instead of one. They will be labelled high, normal or low, day or night, or rate one and rate two.</p>
-          </div>
-          <input type="radio" id="question-no" name="question2" value="no">
-          <label for="question-no">No</label>
-          <input type="radio" id="question-yes" name="question2" value="yes">
-          <label for="question-yes">Yes</label>
-        </ns-inputter>
+        <div id="ecomony-seven" >
+          <ns-inputter name="economy-seven" validation="[&quot;isRequired&quot;]" heading="Is your electricity meter Economy 7?" helper="What is an economy 7 meter?">
+            <div slot="tip-details">
+              <p>Economy 7 meters have two sets of meter readings instead of one. They will be labelled high, normal or low, day or night, or rate one and rate two.</p>
+            </div>
+            <input type="radio" id="question-no" name="question2" value="no">
+            <label for="question-no">No</label>
+            <input type="radio" id="question-yes" name="question2" value="yes">
+            <label for="question-yes">Yes</label>
+          </ns-inputter>
+        </div>
         <p><ns-cta id="fuel-type-submit" type="direct" href="" icon="arrow-right" loading="false" loadingmessage="Loading...">Continue to next step</ns-cta></p>
       </ns-form>
     </ns-panel>
@@ -232,7 +234,7 @@
             </div>
             <label slot="label">Gas meter reading</label>
             <ns-meter-read guide="00---">
-              <input type="text" value="" pattern="d*" inputmode="numeric" maxlength="5">
+              <input type="text" value="" _pattern="d*" inputmode="numeric" maxlength="5">
             </ns-meter-read>
           </ns-inputter>
         </div>
@@ -245,7 +247,7 @@
             </div>
             <label slot="label">Electricity meter reading</label>
             <ns-meter-read guide="1----">
-              <input type="text" value="" pattern="d*" inputmode="numeric" maxlength="5">
+              <input type="text" value="" _pattern="d*" inputmode="numeric" maxlength="5">
             </ns-meter-read>
           </ns-inputter>
         </div>
@@ -258,7 +260,7 @@
             </div>
             <label slot="label">Electricity meter reading (day)</label>
             <ns-meter-read guide="-----">
-              <input type="text" value="" pattern="d*" inputmode="numeric" maxlength="5">
+              <input type="text" value="" _pattern="d*" inputmode="numeric" maxlength="5">
             </ns-meter-read>
           </ns-inputter>
           <ns-inputter validation="[&quot;isRequired&quot;, &quot;minLength(5)&quot;]" helper="How do I provide my electricity meter reading?">
@@ -268,11 +270,13 @@
             </div>
             <label slot="label">Electricity meter reading (night)</label>
             <ns-meter-read guide="0----">
-              <input type="text" value="" pattern="d*" inputmode="numeric" maxlength="5">
+              <input type="text" value="" _pattern="d*" inputmode="numeric" maxlength="5">
             </ns-meter-read>
           </ns-inputter>
-          <p><ns-cta id="meter-reading-submit" type="direct" href="" icon="arrow-right" loading="false" loadingmessage="Loading...">Review details</ns-cta></p>
         </div>
+
+        <p><ns-cta id="meter-reading-submit" type="direct" href="" icon="arrow-right" loading="false" loadingmessage="Loading...">Review details</ns-cta></p>
+
       </ns-form>
 
       <div class="splash" id="summary-form">

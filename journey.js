@@ -16,7 +16,6 @@ function showSection(element, visible) {
     show(element, visible);
 
     console.log('showSection ' + element + ' ' + visible + ' ' + element.childElementCount);
-
     // Disable validation on all child inputters
     for (var i = 0; i < element.childElementCount; i++) {
         if(element.children[i].enableValidation) {
