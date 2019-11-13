@@ -245,13 +245,13 @@
         </div>
 
         <div id="economy7-meter-readings">
-          <ns-inputter validation="[&quot;isRequired&quot;, &quot;minLength(5)&quot;]" helper="Enter your meter reading including any zeros at the beginning. Ignore the red numbers and anything after the decimal point.">
+          <ns-inputter validation="[&quot;isRequired&quot;, &quot;minLength(5)&quot;]" helper="Sometimes your day rate may appear as normal or rate 1. Enter your meter reading including any zeros at the beginning. Ignore the red numbers and anything after the decimal point.">
             <label slot="label">Electricity meter reading (day)</label>
             <ns-meter-read guide="-----">
               <input type="text" value=""  inputmode="numeric" maxlength="5">
             </ns-meter-read>
           </ns-inputter>
-          <ns-inputter validation="[&quot;isRequired&quot;, &quot;minLength(5)&quot;]" helper="Enter your meter reading including any zeros at the beginning. Ignore the red numbers and anything after the decimal point.">
+          <ns-inputter validation="[&quot;isRequired&quot;, &quot;minLength(5)&quot;]" helper="Sometimes your night rate may appear as low or rate 2. Enter your meter reading including any zeros at the beginning. Ignore the red numbers and anything after the decimal point.">
             <label slot="label">Electricity meter reading (night)</label>
             <ns-meter-read guide="0----">
               <input type="text" value=""  inputmode="numeric" maxlength="5">
