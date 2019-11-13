@@ -37,7 +37,7 @@ document.getElementById('find-address-button').addEventListener('click', (event)
         button.removeAttribute('disabled');
         //scrollTo(document.getElementById('address-selector'));
         show(document.getElementById('address-selector'), true);
-    }, 100);
+    }, 400);
 });
 
 
@@ -74,7 +74,7 @@ document.getElementById('ecomony-seven').addEventListener('change', (event) => {
 
 function populateAddresses() {
     var select = document.querySelector('.address-select');
-    var road = 'Kings Road, Townsford, Surrey, AB12 3CD';
+    var road = 'Kings Road, Townsford, Surrey';
     var number = 63;
     for(var i = 0; i < 10; i++) {
         var address = (number + i) + ' ' + road;

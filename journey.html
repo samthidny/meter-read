@@ -194,7 +194,7 @@
     </ns-panel>
 
     <ns-panel>
-        <ns-form-summary class="splosh" id="fuel-type-form-summary" title="Please let us know which meter readings you’re giving"></ns-form-summary>
+        <ns-form-summary class="splosh" id="fuel-type-form-summary" title="Please let us know which meter readings you’re giving" changeMessage="Change fuel types"></ns-form-summary>
     </ns-panel>
 
     <ns-panel class="mh100vh">
@@ -220,7 +220,7 @@
     </ns-panel>
 
     <ns-panel>
-        <ns-form-summary class="splosh" id="meter-reading-form-summary" title="Meter readings"></ns-form-summary>
+        <ns-form-summary class="splosh" id="meter-reading-form-summary" title="Meter readings" changeMessage="Update meter details"></ns-form-summary>
     </ns-panel>
 
     <ns-panel class="mh100vh">
@@ -245,13 +245,13 @@
         </div>
 
         <div id="economy7-meter-readings">
-          <ns-inputter validation="[&quot;isRequired&quot;, &quot;minLength(5)&quot;]" helper="Enter your meter reading including any zeros at the beginning. Ignore the red numbers and anything after the decimal point.">
+          <ns-inputter validation="[&quot;isRequired&quot;, &quot;minLength(5)&quot;]" helper="Sometimes your day rate may appear as normal or rate 1. Enter your meter reading including any zeros at the beginning. Ignore the red numbers and anything after the decimal point.">
             <label slot="label">Electricity meter reading (day)</label>
             <ns-meter-read guide="-----">
               <input type="text" value=""  inputmode="numeric" maxlength="5">
             </ns-meter-read>
           </ns-inputter>
-          <ns-inputter validation="[&quot;isRequired&quot;, &quot;minLength(5)&quot;]" helper="Enter your meter reading including any zeros at the beginning. Ignore the red numbers and anything after the decimal point.">
+          <ns-inputter validation="[&quot;isRequired&quot;, &quot;minLength(5)&quot;]" helper="Sometimes your night rate may appear as low or rate 2. Enter your meter reading including any zeros at the beginning. Ignore the red numbers and anything after the decimal point.">
             <label slot="label">Electricity meter reading (night)</label>
             <ns-meter-read guide="0----">
               <input type="text" value=""  inputmode="numeric" maxlength="5">
