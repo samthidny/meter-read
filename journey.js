@@ -53,7 +53,7 @@ document.getElementById('meter-readings-type').addEventListener('change', (event
     showSection(document.getElementById('gas-meter-reading'), event.target.value !== 'electricity');
 
     // If its gas only hide all elec meters
-    
+
     if (event.target.value === 'gas') {
         showSection(document.getElementById('electricity-meter-reading'), false);
         showSection(document.getElementById('economy7-meter-readings'), false);
@@ -62,7 +62,7 @@ document.getElementById('meter-readings-type').addEventListener('change', (event
     } else {
         showSection(document.getElementById('ecomony-seven'), true);
     }
-    
+
 });
 
 
@@ -83,14 +83,14 @@ function populateAddresses() {
         opt.innerHTML = address;
         select.appendChild(opt);
     }
-    
+
 }
 
 var forms = ['address-form', 'fuel-type-form', 'meter-reading-form', 'summary-form'];
 var maxIndex = -1;
 
 function showForm(name, cancelScroll) {
-    
+
     console.log('name ' + name);
 
     var currentIndex = forms.indexOf(name);
@@ -108,7 +108,7 @@ function showForm(name, cancelScroll) {
     });
 
     // Previous summary
-    // var prev = document.getElementById(`${forms[currentIndex - 1]}-summary`); 
+    // var prev = document.getElementById(`${forms[currentIndex - 1]}-summary`);
     // if(prev) {
     //     console.log('PREV ' + prev.id);
     //     prev.scrollIntoView();
@@ -183,7 +183,7 @@ document.querySelector('.select-address-button').addEventListener('click', (even
 document.getElementById('fuel-type-submit').addEventListener('click', () => {
     var form = document.getElementById('fuel-type-form');
     var validation = form.validate();
-    
+
     if(validation.isValid) {
         var fuels = {
             'gas': 'Gas only',
@@ -202,7 +202,7 @@ document.getElementById('fuel-type-submit').addEventListener('click', () => {
 document.getElementById('meter-reading-submit').addEventListener('click', () => {
     var form = document.getElementById('meter-reading-form');
     var validation = form.validate();
-    
+
     var trans = {
         'gas-meter-reading': 'Gas meter reading',
         'electricity-meter-reading': 'Electricity meter reading',
@@ -224,19 +224,19 @@ document.getElementById('meter-reading-submit').addEventListener('click', () => 
 
 // Final Submit button on Summary form
 
-document.getElementById('submit-button').addEventListener('click', () => {
-    var form = document.getElementById('meter-reading-form');
-    var validation = form.validate();
-    
-    if(validation.isValid) {
-        // setSummary('fuel-type-form-summary', `You have X and Y`);
-        // showForm('meter-reading-form');
-    }
-    
-    
-    // setTimeout(() => {
-    //     document.location.href = 'thanks.html';
-    // }, 100);
-    
-});
+// document.getElementById('submit-button').addEventListener('click', () => {
+//     var form = document.getElementById('meter-reading-form');
+//     var validation = form.validate();
+//
+//     if(validation.isValid) {
+//         // setSummary('fuel-type-form-summary', `You have X and Y`);
+//         // showForm('meter-reading-form');
+//     }
+//
+//
+//     // setTimeout(() => {
+//     //     document.location.href = 'thanks.html';
+//     // }, 100);
+//
+// });
 
