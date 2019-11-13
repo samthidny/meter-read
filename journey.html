@@ -156,6 +156,8 @@
 
     <ns-panel>
       <ns-form-summary class="splosh" id="address-form-summary" title="Address" changeMessage="Select a different address"></ns-form-summary>
+    </ns-panel>
+    <ns-panel>
       <ns-form class="splosh" id="address-form">
         <h3>Tell us your address</h3>
         <p class="p-normal">This is the address you want us to supply the energy to.</p>
@@ -178,7 +180,10 @@
     </ns-panel>
 
     <ns-panel>
-      <ns-form-summary class="splosh" id="fuel-type-form-summary" title="Please let us know which meter readings you’re giving"></ns-form-summary>
+        <ns-form-summary class="splosh" id="fuel-type-form-summary" title="Please let us know which meter readings you’re giving"></ns-form-summary>
+    </ns-panel>
+
+    <ns-panel>
       <ns-form class="splosh" id="fuel-type-form">
         <ns-inputter id="meter-readings-type" name="fuel-type" validation="[&quot;isRequired&quot;]" heading="Which energy you’re switching over to us" helper="" name="yes">
           <input type="radio" id="question-Gas" name="question" value="gas">
@@ -201,8 +206,10 @@
     </ns-panel>
 
     <ns-panel>
-      <ns-form-summary class="splosh" id="meter-reading-form-summary" title="Meter readings"></ns-form-summary>
-
+        <ns-form-summary class="splosh" id="meter-reading-form-summary" title="Meter readings"></ns-form-summary>
+    </ns-panel>
+    
+    <ns-panel>
       <ns-form class="splosh" id="meter-reading-form">
         <h3>Your opening meter reading</h3>
         <div id="gas-meter-reading">

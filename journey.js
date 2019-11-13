@@ -99,14 +99,13 @@ function showForm(name, cancelScroll) {
     }
 
     forms.forEach((name, index) => {
-        show(document.getElementById(`${name}`), false);
+        show(document.getElementById(`${name}`).closest('ns-panel'), false);
         var summary = document.getElementById(`${name}-summary`);
         if (summary) {
             // show summaries beforre this form only
-            show(summary, index < currentIndex);
+            show(summary.closest('ns-panel'), index < currentIndex);
         }
     });
-
 
     // Previous summary
     // var prev = document.getElementById(`${forms[currentIndex - 1]}-summary`); 
@@ -117,7 +116,7 @@ function showForm(name, cancelScroll) {
     //     console.log('No prev found ' + name);
     // }
 
-    show(document.getElementById(`${name}`), true);
+    show(document.getElementById(`${name}`).closest('ns-panel'), true);
     if (!cancelScroll) {
         document.getElementById(`${name}`).closest('ns-panel').scrollIntoView();
         // document.getElementById(`${name}`).scrollIntoView();
@@ -125,7 +124,7 @@ function showForm(name, cancelScroll) {
     var summary = document.getElementById(`${name}-summary`);
     if(summary) {
         console.log('SUMMARY ' + summary.id);
-        show(summary, false);
+        show(summary.closest('ns-panel'), false);
     }
 
 }
@@ -155,7 +154,7 @@ function init() {
         var summary = document.getElementById(`${name}-summary`);
         if (summary) {
             // show summaries beforre this form only
-            show(summary, false);
+            show(summary.closest('ns-panel'), false);
         }
     });
 
