@@ -7,6 +7,11 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <link rel="stylesheet" href="nucleus/dist/styles.min.css">
+  <style>
+    .mh100vh {
+      min-height: 100vh;
+    }
+  </style>
 </head>
 
 <body>
@@ -155,14 +160,18 @@
     <!-- skip links end -->
 
     <ns-panel>
-      <h1 class="h2 enlighten">Opening <b>meter reading</b></h1>
+      <div class="splash">
+        <span class="h5">Thanks again for choosing us.</span>
+        <span class="h1 enlighten">Your opening <b>meter reading</b></span>
+        <p class="p-feature">Giving us your meter reading(s) helps us to accurately estimate your bill so we don’t overcharge you.</p>
+      </div>
     </ns-panel>
-
 
     <ns-panel>
       <ns-form-summary class="splosh" id="address-form-summary" title="Address" changeMessage="Select a different address"></ns-form-summary>
     </ns-panel>
-    <ns-panel>
+
+    <ns-panel class="mh100vh">
       <ns-form class="splosh" id="address-form">
         <h3>Tell us your address</h3>
         <p class="p-normal">This is the address you want us to supply the energy to.</p>
@@ -170,7 +179,7 @@
           <label slot="label">Enter your postcode</label>
           <input type="text" placeholder="e.g. SL5 8FF" name="postcode" autocomplete="postal-code">
         </ns-inputter>
-        <p><ns-cta id="find-address-button" type="direct" href="" icon="chevron-down" loading="false" loadingmessage="Loading...">Find your address</ns-cta></p>
+        <p><ns-cta id="find-address-button" type="direct" icon="chevron-down" loading="false" loadingmessage="Loading...">Find your address</ns-cta></p>
         <div id="address-selector">
           <ns-inputter validation="[&quot;isRequired&quot;]">
             <label slot="label">Select your address</label>
@@ -178,7 +187,7 @@
               <option>Please select</option>
             </select>
           </ns-inputter>
-          <p><ns-cta class="select-address-button" type="direct" href="" icon="arrow-right" loading="false">Continue</ns-cta></p>
+          <p><ns-cta class="select-address-button" type="direct" icon="arrow-right" loading="false">Continue</ns-cta></p>
           <p><ns-cta type="text" href="#!" icon="arrow-right" loading="false" loadingmessage="Loading...">Can't find your address?</ns-cta></p>
         </div>
       </ns-form>
@@ -188,7 +197,7 @@
         <ns-form-summary class="splosh" id="fuel-type-form-summary" title="Please let us know which meter readings you’re giving"></ns-form-summary>
     </ns-panel>
 
-    <ns-panel>
+    <ns-panel class="mh100vh">
       <ns-form class="splosh" id="fuel-type-form">
         <ns-inputter id="meter-readings-type" name="fuel-type" validation="[&quot;isRequired&quot;]" heading="Which energy you’re switching over to us" helper="" name="yes">
           <input type="radio" id="question-Gas" name="question" value="gas">
@@ -206,7 +215,7 @@
             <label for="question-yes">Yes</label>
           </ns-inputter>
         </div>
-        <p><ns-cta id="fuel-type-submit" type="direct" href="" icon="arrow-right" loading="false" loadingmessage="Loading...">Continue to next step</ns-cta></p>
+        <p><ns-cta id="fuel-type-submit" type="direct" icon="arrow-right" loading="false" loadingmessage="Loading...">Continue to next step</ns-cta></p>
       </ns-form>
     </ns-panel>
 
@@ -214,7 +223,7 @@
         <ns-form-summary class="splosh" id="meter-reading-form-summary" title="Meter readings"></ns-form-summary>
     </ns-panel>
 
-    <ns-panel>
+    <ns-panel class="mh100vh">
       <ns-form class="splosh" id="meter-reading-form">
         <h3>Your opening meter reading</h3>
         <div id="gas-meter-reading">
@@ -250,18 +259,18 @@
           </ns-inputter>
         </div>
 
-        <p><ns-cta id="meter-reading-submit" type="direct" href="" icon="arrow-right" loading="false" loadingmessage="Loading...">Review details</ns-cta></p>
+        <p><ns-cta id="meter-reading-submit" type="direct" icon="arrow-right" loading="false" loadingmessage="Loading...">Review details</ns-cta></p>
 
       </ns-form>
     </ns-panel>
 
-    <ns-panel>
+    <ns-panel class="mh100vh">
       <div class="splosh" id="summary-form">
         <h3>Comfirm your details</h3>
         <p class="p-normal">By clicking below you’ll confirm that you live at the chosen address and that the above meter readings are correct to the best of your knowledge.</p>
         <div>
           <a href="thanks.html">
-            <ns-cta id="submit-button" type="direct" href="" icon="arrow-right" loading="false" loadingmessage="Loading...">Submit meter reading</ns-cta>
+            <ns-cta id="submit-button" type="direct" icon="arrow-right" loading="false" loadingmessage="Loading...">Submit meter reading</ns-cta>
           </a>
         </div>
       </div>
