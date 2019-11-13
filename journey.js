@@ -89,7 +89,7 @@ function populateAddresses() {
 var forms = ['address-form', 'fuel-type-form', 'meter-reading-form', 'summary-form'];
 var maxIndex = -1;
 
-function showForm(name) {
+function showForm(name, cancelScroll) {
     
     console.log('name ' + name);
 
@@ -118,7 +118,10 @@ function showForm(name) {
     // }
 
     show(document.getElementById(`${name}`), true);
-    document.getElementById(`${name}`).scrollIntoView();
+    if (!cancelScroll) {
+        document.getElementById(`${name}`).closest('ns-panel').scrollIntoView();
+        // document.getElementById(`${name}`).scrollIntoView();
+    }
     var summary = document.getElementById(`${name}-summary`);
     if(summary) {
         console.log('SUMMARY ' + summary.id);
@@ -145,7 +148,7 @@ function init() {
         }
     });
 
-    showForm('address-form');
+    showForm('address-form', true);
 
     // Hide all summaries
     forms.forEach((name, index) => {
