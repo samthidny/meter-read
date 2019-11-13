@@ -140,7 +140,7 @@ function init() {
     forms.forEach((name) => {
         var summary = document.getElementById(`${name}-summary`);
         if  (summary) {
-            summary.addEventListener('click', (event) => {
+            summary.addEventListener('edit', (event) => {
                 var name = event.target.id.replace('-summary', '');
                 showForm(name);
             });
