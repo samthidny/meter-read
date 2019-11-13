@@ -204,6 +204,7 @@
       <ns-form-summary class="splosh" id="meter-reading-form-summary" title="Meter readings"></ns-form-summary>
 
       <ns-form class="splosh" id="meter-reading-form">
+        <h3>Your opening meter reading</h3>
         <div id="gas-meter-reading">
           <ns-inputter validation="[&quot;isRequired&quot;, &quot;minLength(5)&quot;]" helper="Enter your meter reading including any zeros at the beginning. Ignore the red numbers and anything after the decimal point.">
             <label slot="label">Gas meter reading</label>
@@ -240,14 +241,15 @@
         <p><ns-cta id="meter-reading-submit" type="direct" href="" icon="arrow-right" loading="false" loadingmessage="Loading...">Review details</ns-cta></p>
 
       </ns-form>
+    </ns-panel>
 
-      <div class="splash" id="summary-form">
+    <ns-panel>
+      <div class="splosh" id="summary-form">
+        <h3>Comfirm your details</h3>
         <p class="p-normal">By clicking below you’ll confirm that you live at the chosen address and that the above meter readings are correct to the best of your knowledge.</p>
         <p><ns-cta id="submit-button" type="direct" href="" icon="arrow-right" loading="false" loadingmessage="Loading...">Submit meter reading</ns-cta></p>
       </div>
-
     </ns-panel>
-
 
     <ns-footer></ns-footer>
 
